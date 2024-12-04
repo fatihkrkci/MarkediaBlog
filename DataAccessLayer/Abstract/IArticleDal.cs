@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IArticleDal : IGenericDal<Article>
     {
+        List<Article> AwaitingApprovalArticles();
+        List<Article> ApprovedArticles();
+        List<Article> DisapprovedArticles();
     }
 }

@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        public List<Category> TGetActiveCategoriesSortedDescending();
+        public List<Category> TGetArchivedCategoriesSortedDescending();
     }
 }

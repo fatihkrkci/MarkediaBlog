@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public DateTime? UpdatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool Status { get; set; }
+        public List<Article> Articles { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">@Model.Name Kategori Bilgilerini Güncelle</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <input type="hidden" asp-for="CategoryId"/>
+                <input type="hidden" asp-for="CreatedAt"/>
+                <input type="hidden" asp-for="Status"/>
+                <input type="hidden" asp-for="DeletedAt"/>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Kategori Adı</label>
+                        <input type="text" class="form-control" asp-for="Name" placeholder="Kategori adını yazın">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>

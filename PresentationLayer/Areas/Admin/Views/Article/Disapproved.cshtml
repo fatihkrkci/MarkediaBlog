@@ -1,0 +1,55 @@
+﻿@model List<Article>
+
+@{
+    ViewData["Title"] = "Disapproved";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Makale İşlemleri</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="display" style="min-width: 845px">
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Başlık</th>
+                            <th>İçerik</th>
+                            <th>Durum</th>
+                            <th>Oluşturulma Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="color: #454545;">@item.Category.Name</td>
+                                @if (item.Title.Length >= 15)
+                                {
+                                    <td style="color: #454545;">@item.Title.Substring(0, 15)...</td>
+                                }
+                                else if (item.Title.Length < 15)
+                                {
+                                    <td style="color: #454545;">@item.Title</td>
+                                }
+                                @if (item.Content.Length >= 15)
+                                {
+                                    <td style="color: #454545;">@item.Content.Substring(0, 15)...</td>
+                                }
+                                else if (item.Content.Length < 15)
+                                {
+                                    <td style="color: #454545;">@item.Content</td>
+                                }
+                                <td style="color: #454545;"><span class="badge badge-danger">Reddedildi</span></td>
+                                <td style="color: #454545;">@item.CreatedAt.ToString("dd.MM.yyyy | HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

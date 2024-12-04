@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\focus-2\documentation\main\assets\css\lib\bootstrap.min.css" />
+    <Content Remove="wwwroot\focus-2\documentation\main\assets\css\lib\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\focus-2\documentation\main\assets\css\lib\menubar\bootstrap.min.css" />
+    <Content Remove="wwwroot\focus-2\documentation\main\assets\css\lib\menubar\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\focus-2\documentation\main\assets\js\lib\bootstrap.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.36" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.36">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\focus-2\documentation\main\assets\css\lib\bootstrap.min.css" />
+    <None Include="wwwroot\focus-2\documentation\main\assets\css\lib\bootstrap.min.css.map" />
+    <None Include="wwwroot\focus-2\documentation\main\assets\css\lib\menubar\bootstrap.min.css" />
+    <None Include="wwwroot\focus-2\documentation\main\assets\css\lib\menubar\bootstrap.min.css.map" />
+    <None Include="wwwroot\focus-2\documentation\main\assets\js\lib\bootstrap.min.js" />
     <None Include="wwwroot\login-form-01\.DS_Store" />
     <None Include="wwwroot\login-form-01\css\.DS_Store" />
     <None Include="wwwroot\login-form-01\fonts\.DS_Store" />

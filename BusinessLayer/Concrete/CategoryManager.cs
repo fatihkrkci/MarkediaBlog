@@ -23,9 +23,19 @@ namespace BusinessLayer.Concrete
             _categoryDal.Delete(id);
         }
 
+        public List<Category> TGetActiveCategoriesSortedDescending()
+        {
+            return _categoryDal.GetActiveCategoriesSortedDescending();
+        }
+
         public List<Category> TGetAll()
         {
             return _categoryDal.GetAll();
+        }
+
+        public List<Category> TGetArchivedCategoriesSortedDescending()
+        {
+            return _categoryDal.GetArchivedCategoriesSortedDescending();
         }
 
         public Category TGetById(int id)

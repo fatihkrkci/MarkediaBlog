@@ -9,5 +9,8 @@ namespace BusinessLayer.Abstract
 {
     public interface IArticleService : IGenericService<Article>
     {
+        public List<Article> TAwaitingApprovalArticles();
+        public List<Article> TApprovedArticles();
+        public List<Article> TDisapprovedArticles();
     }
 }

@@ -12,8 +12,11 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfSocialMediaAccountDal : GenericRepository<SocialMediaAccount>, ISocialMediaAccountDal
     {
+        private readonly MarkediaBlogContext _context;
+
         public EfSocialMediaAccountDal(MarkediaBlogContext context) : base(context)
         {
+            _context = context;
         }
     }
 }

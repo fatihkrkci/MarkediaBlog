@@ -1,0 +1,25 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Yeni Kategori Ekle</h4>
+    </div>
+    <div class="card-body">
+        <div class="basic-form">
+            <form method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Kategori Adı</label>
+                        <input type="text" class="form-control" asp-for="Name" placeholder="Kategori adını yazın">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Kategori Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>

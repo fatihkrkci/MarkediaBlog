@@ -1,0 +1,47 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "CategoryList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Kategori İşlemleri</h4>
+            <a href="/Admin/Category/Create" class="btn btn-success">
+                <i class="fa fa-plus"></i> Yeni Kategori Ekle
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="display" style="min-width: 845px">
+                    <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="color: #454545;">@item.Name</td>
+                                <td style="color: #454545;">@item.CreatedAt.ToString("dd.MM.yyyy | HH:mm")</td>
+                                <td>
+                                    <a href="/Admin/Category/Update/@item.CategoryId" class="btn btn-warning" title="Kategori bilgisini güncelle">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="/Admin/Category/Delete/@item.CategoryId" class="btn btn-danger" title="Kategoriyi sil">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

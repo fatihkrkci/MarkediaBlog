@@ -12,8 +12,11 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfContactDal : GenericRepository<Contact>, IContactDal
     {
+        private readonly MarkediaBlogContext _context;
+
         public EfContactDal(MarkediaBlogContext context) : base(context)
         {
+            _context = context;
         }
     }
 }

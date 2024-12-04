@@ -12,8 +12,11 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
+        private readonly MarkediaBlogContext _context;
+
         public EfCommentDal(MarkediaBlogContext context) : base(context)
         {
+            _context = context;
         }
     }
 }

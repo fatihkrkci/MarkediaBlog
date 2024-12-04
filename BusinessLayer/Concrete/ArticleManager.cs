@@ -18,9 +18,24 @@ namespace BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
+        public List<Article> TApprovedArticles()
+        {
+            return _articleDal.ApprovedArticles();
+        }
+
+        public List<Article> TAwaitingApprovalArticles()
+        {
+            return _articleDal.AwaitingApprovalArticles();
+        }
+
         public void TDelete(int id)
         {
             _articleDal.Delete(id);
+        }
+
+        public List<Article> TDisapprovedArticles()
+        {
+            return _articleDal.DisapprovedArticles();
         }
 
         public List<Article> TGetAll()
