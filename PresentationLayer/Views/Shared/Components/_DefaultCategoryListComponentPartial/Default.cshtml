@@ -1,0 +1,13 @@
+﻿@model List<Category>
+
+<div class="widget">
+    <h2 class="widget-title">Kategoriler</h2>
+    <div class="link-widget">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a href="#">@item.Name <span>(21)</span></a></li>
+            }
+        </ul>
+    </div>
+</div>
