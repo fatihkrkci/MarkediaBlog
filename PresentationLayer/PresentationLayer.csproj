@@ -152,6 +152,12 @@
     <None Include="wwwroot\login-form-01\scss\bootstrap\_utilities.scss" />
     <None Include="wwwroot\login-form-01\scss\bootstrap\_variables.scss" />
     <None Include="wwwroot\login-form-01\scss\style.scss" />
+    <None Include="wwwroot\mazer-1.0.0\.github\FUNDING.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Author\Data\" />
+    <Folder Include="Areas\Author\Models\" />
   </ItemGroup>
 
 </Project>

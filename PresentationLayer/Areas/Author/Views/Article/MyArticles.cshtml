@@ -1,0 +1,81 @@
+﻿@model List<Article>
+
+@{
+    ViewData["Title"] = "MyArticles";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/mazer-1.0.0/dist/assets/vendors/simple-datatables/style.css">
+
+<header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+        <i class="bi bi-justify fs-3"></i>
+    </a>
+</header>
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Makale İşlemleri</h3>
+                <p class="text-subtitle text-muted">Bu sayfadan kendi yazdığınız yazılar ile ilgili çeşitli işlemler gerçekleştirebilirsiniz.</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Istatistik/Index/">Yazar Paneli</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Makale İşlemleri</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <a href="/Author/Article/Create" class="btn btn-primary">Yeni Makale Oluştur</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>
+                                    <a href="/Author/Article/Update/@item.ArticleId" class="btn btn-warning" title="Yazıyı güncelle">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a href="/Author/Article/Delete/@item.ArticleId" class="btn btn-danger" title="Yazıyı sil">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="~/mazer-1.0.0/dist/assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script>
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1, {
+        searchable: true,
+        fixedHeight: true,
+        perPage: 5,
+        labels: {
+            placeholder: "Ara...",
+            noRows: "Gösterilecek kayıt bulunamadı",
+            info: "Toplam {rows} kayıttan {start} ve {end} arasındakiler gözüküyor"
+        }
+    });
+</script>

@@ -1,0 +1,109 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+        <i class="bi bi-justify fs-3"></i>
+    </a>
+</header>
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Makale İşlemleri</h3>
+                <p class="text-subtitle text-muted">Bu sayfadan yeni bir yazı oluşturabilir ve okurlarınızla paylaşabilirsiniz.</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Istatistik/Index/">Yazar Paneli</a></li>
+                        <li class="breadcrumb-item"><a href="/Kategori/Index">Makale İşlemleri</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Yeni Makale Oluştur</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="card">
+            <div class="card-header" style="padding-bottom:0">
+                <h4 class="card-title">Yeni Makale Oluştur</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form method="post" class="form form-vertical">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Kategori</label>
+                                        <div class="position-relative">
+                                            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class="form-control" })
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-inboxes"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Görsel</label>
+                                        <div class="position-relative">
+                                            <input type="text" asp-for="ImageUrl" class="form-control"
+                                                   placeholder="Görsel linkini buraya yapıştırın"
+                                                   id="first-name-icon">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-image"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">Başlık</label>
+                                        <div class="position-relative">
+                                            <input type="text" asp-for="Title" class="form-control"
+                                                   placeholder="Yazı başlığını yazın"
+                                                   id="first-name-icon">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-card-heading"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="first-name-icon">İçerik</label>
+                                        <div class="position-relative">
+                                            <textarea asp-for="Content" rows="10" class="form-control"
+                                                   placeholder="Yazı içeriğini buraya girin"
+                                                   id="first-name-icon"></textarea>
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-paragraph"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit"
+                                            class="btn btn-primary me-1 mb-1">
+                                        Oluştur
+                                    </button>
+                                    <button type="reset"
+                                            class="btn btn-light-secondary me-1 mb-1">
+                                        Vazgeç
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
