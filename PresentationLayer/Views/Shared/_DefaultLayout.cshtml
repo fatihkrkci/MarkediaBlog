@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+<body>
+    <div id="wrapper">
+        <header class="market-header header">
+            <div class="container-fluid">
+                @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+            </div>
+        </header>
+        @RenderBody()
+        @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+        <div class="dmtop">Scroll to Top</div>
+    </div>
+    <script src="~/markedia/js/jquery.min.js"></script>
+    <script src="~/markedia/js/tether.min.js"></script>
+    <script src="~/markedia/js/bootstrap.min.js"></script>
+    <script src="~/markedia/js/animate.js"></script>
+    <script src="~/markedia/js/custom.js"></script>
+</body>

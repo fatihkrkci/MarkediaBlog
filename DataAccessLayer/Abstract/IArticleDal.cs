@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
         List<Article> AwaitingApprovalArticles();
         List<Article> ApprovedArticles();
         List<Article> DisapprovedArticles();
+        List<Article> ArticleListWithCategoryAndAppUser();
+        Article GetArticleDetails(int id);
     }
 }

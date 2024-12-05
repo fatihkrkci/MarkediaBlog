@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _socialMediaAccountDal.Delete(id);
         }
 
+        public List<SocialMediaAccount> TGetActiveSocialMediaAccounts()
+        {
+            return _socialMediaAccountDal.GetActiveSocialMediaAccounts();
+        }
+
         public List<SocialMediaAccount> TGetAll()
         {
             return _socialMediaAccountDal.GetAll();

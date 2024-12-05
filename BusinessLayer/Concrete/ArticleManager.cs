@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             return _articleDal.ApprovedArticles();
         }
 
+        public List<Article> TArticleListWithCategoryAndAppUser()
+        {
+            return _articleDal.ArticleListWithCategoryAndAppUser();
+        }
+
         public List<Article> TAwaitingApprovalArticles()
         {
             return _articleDal.AwaitingApprovalArticles();
@@ -41,6 +46,11 @@ namespace BusinessLayer.Concrete
         public List<Article> TGetAll()
         {
             return _articleDal.GetAll();
+        }
+
+        public Article TGetArticleDetails(int id)
+        {
+            return _articleDal.GetArticleDetails(id);
         }
 
         public Article TGetById(int id)

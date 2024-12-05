@@ -14,7 +14,7 @@ namespace PresentationLayer.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var articles = _articleService.TApprovedArticles();
+            var articles = _articleService.TArticleListWithCategoryAndAppUser();
             return View(articles);
         }
     }

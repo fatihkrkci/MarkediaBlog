@@ -24,14 +24,22 @@ namespace PresentationLayer.Controllers
         public async Task<IActionResult> Index(LoginViewModel model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, true);
-            if (result.Succeeded)
+
+            if (!result.Succeeded)
             {
-                return Redirect("/Admin/Category/CategoryList");
+                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
+                return View(model);
+            }
+
+            if (model.Username.ToLower() == "admin")
+            {
+                return Redirect("/Admin/Dashboard/Index");
             }
             else
             {
-                return View();
+                return Redirect("/Author/Dashboard/Index");
             }
         }
+
     }
 }

@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+        <i class="bi bi-justify fs-3"></i>
+    </a>
+</header>
+
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Yazar Paneli</h3>
+                <p class="text-subtitle text-muted">Bu panel aracılığıyla yazılarınız, profiliniz veya yorumlarınız üzerinde çeşitli işlemler yapabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3 col-lg-3 col-md-3">
+                    <div class="card">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon blue">
+                                        <i class="iconly-boldBag"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Yazdığım Makale Sayısı</h6>
+                                    <h6 class="font-extrabold mb-0">@ViewBag.d2</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-lg-3 col-md-3">
+                    <div class="card">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon green">
+                                        <i class="iconly-boldUser1"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">Yazdığım Yorum Sayısı</h6>
+                                    <h6 class="font-extrabold mb-0">@ViewBag.d3</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-lg-3 col-md-3">
+                    <div class="card">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon red">
+                                        <i class="iconly-boldArrow---Up"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">En Çok Yazdığım Kategori</h6>
+                                    <h6 class="font-extrabold mb-0">@ViewBag.d8</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-lg-3 col-md-3">
+                    <div class="card">
+                        <div class="card-body px-3 py-4-5">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="stats-icon purple">
+                                        <i class="iconly-boldArrow---Down"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h6 class="text-muted font-semibold">En Az Yazdığım Kategori</h6>
+                                    <h6 class="font-extrabold mb-0">@ViewBag.d9</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

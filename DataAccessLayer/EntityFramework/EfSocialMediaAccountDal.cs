@@ -18,5 +18,10 @@ namespace DataAccessLayer.EntityFramework
         {
             _context = context;
         }
+
+        public List<SocialMediaAccount> GetActiveSocialMediaAccounts()
+        {
+            return _context.SocialMediaAccounts.Where(x => x.Status == true).ToList();
+        }
     }
 }

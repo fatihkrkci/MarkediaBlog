@@ -13,5 +13,8 @@ namespace EntityLayer.Concrete
         public string Surname { get; set; }
         public string ImageUrl { get; set; }
         public string About { get; set; }
+        public List<Article> Articles { get; set; }
+        public List<SocialMediaAccount> SocialMediaAccounts { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

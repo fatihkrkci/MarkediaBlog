@@ -25,6 +25,11 @@ namespace DataAccessLayer.EntityFramework
             return _context.Articles.Include(x => x.Category).Where(y => y.ArticleStatus == ArticleStatus.Approved).ToList();
         }
 
+        public List<Article> ArticleListWithCategoryAndAppUser()
+        {
+            return _context.Articles.Include(x => x.Category).Include(y => y.AppUser).Where(z => z.ArticleStatus == ArticleStatus.Approved && z.Status == true).ToList();
+        }
+
         public List<Article> AwaitingApprovalArticles()
         {
             return _context.Articles.Include(x => x.Category).Where(y => y.ArticleStatus == ArticleStatus.AwaitingApproval).ToList();
@@ -33,6 +38,11 @@ namespace DataAccessLayer.EntityFramework
         public List<Article> DisapprovedArticles()
         {
             return _context.Articles.Include(x => x.Category).Where(y => y.ArticleStatus == ArticleStatus.Disapproved).ToList();
+        }
+
+        public Article GetArticleDetails(int id)
+        {
+            return _context.Articles.Include(x => x.Category).Include(y => y.AppUser).Where(z => z.ArticleId == id).FirstOrDefault();
         }
     }
 }

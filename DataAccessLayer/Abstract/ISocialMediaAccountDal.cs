@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ISocialMediaAccountDal : IGenericDal<SocialMediaAccount>
     {
+        List<SocialMediaAccount> GetActiveSocialMediaAccounts();
     }
 }

@@ -12,5 +12,7 @@ namespace BusinessLayer.Abstract
         public List<Article> TAwaitingApprovalArticles();
         public List<Article> TApprovedArticles();
         public List<Article> TDisapprovedArticles();
+        public List<Article> TArticleListWithCategoryAndAppUser();
+        public Article TGetArticleDetails(int id);
     }
 }
