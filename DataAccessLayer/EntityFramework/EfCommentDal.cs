@@ -2,6 +2,7 @@
 using DataAccessLayer.Context;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace DataAccessLayer.EntityFramework
         public EfCommentDal(MarkediaBlogContext context) : base(context)
         {
             _context = context;
+        }
+
+        public List<Comment> GetCommentsByArticleId(int id)
+        {
+            return _context.Comments.Where(x => x.ArticleId == id).Include(y => y.AppUser).ToList();
         }
     }
 }

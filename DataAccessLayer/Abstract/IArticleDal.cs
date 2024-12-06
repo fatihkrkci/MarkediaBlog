@@ -14,5 +14,6 @@ namespace DataAccessLayer.Abstract
         List<Article> DisapprovedArticles();
         List<Article> ArticleListWithCategoryAndAppUser();
         Article GetArticleDetails(int id);
+        void ArticleViewCountIncrease(int id);
     }
 }

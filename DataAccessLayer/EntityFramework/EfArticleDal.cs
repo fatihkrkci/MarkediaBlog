@@ -30,6 +30,13 @@ namespace DataAccessLayer.EntityFramework
             return _context.Articles.Include(x => x.Category).Include(y => y.AppUser).Where(z => z.ArticleStatus == ArticleStatus.Approved && z.Status == true).ToList();
         }
 
+        public void ArticleViewCountIncrease(int id)
+        {
+            var updatedValue = _context.Articles.Find(id);
+            updatedValue.ViewCount += 1;
+            _context.SaveChanges();
+        }
+
         public List<Article> AwaitingApprovalArticles()
         {
             return _context.Articles.Include(x => x.Category).Where(y => y.ArticleStatus == ArticleStatus.AwaitingApproval).ToList();

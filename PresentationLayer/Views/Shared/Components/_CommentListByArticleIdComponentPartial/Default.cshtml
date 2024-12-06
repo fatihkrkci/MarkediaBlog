@@ -1,0 +1,30 @@
+﻿@model List<Comment>
+
+<div class="custombox clearfix">
+    <h4 class="small-title">Yorumlar</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="comments-list">
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="media">
+                            <a class="media-left" href="#">
+                                <img src="@item.AppUser.ImageUrl" alt="" class="rounded-circle">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading user_name">@item.AppUser.Name @item.AppUser.Surname<small>@item.CreatedAt.ToShortTimeString()</small></h4>
+                                <p>@item.Content</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Bu yazıya henüz bir yorum yapılmamış.</p>
+                }
+            </div>
+        </div><!-- end col -->
+    </div><!-- end row -->
+</div><!-- end custom-box -->

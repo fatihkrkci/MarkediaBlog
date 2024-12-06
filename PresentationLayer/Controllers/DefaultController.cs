@@ -20,6 +20,8 @@ namespace PresentationLayer.Controllers
 
         public IActionResult ArticleDetail(int id)
         {
+            _articleService.TArticleViewCountIncrease(id);
+
             var value = _articleService.TGetArticleDetails(id);
             return View(value);
         }

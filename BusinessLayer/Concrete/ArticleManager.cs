@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             return _articleDal.ArticleListWithCategoryAndAppUser();
         }
 
+        public void TArticleViewCountIncrease(int id)
+        {
+            _articleDal.ArticleViewCountIncrease(id);
+        }
+
         public List<Article> TAwaitingApprovalArticles()
         {
             return _articleDal.AwaitingApprovalArticles();
