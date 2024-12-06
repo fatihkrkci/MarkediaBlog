@@ -4,6 +4,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Context;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 using PresentationLayer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +32,7 @@ builder.Services.AddScoped<ISocialMediaAccountService, SocialMediaAccountManager
 builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
 builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
 
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation().AddFluentValidation();
 
 var app = builder.Build();
 

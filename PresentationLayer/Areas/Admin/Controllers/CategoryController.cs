@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules.CategoryValidationRules;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Areas.Admin.Controllers
@@ -29,11 +31,27 @@ namespace PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Category category)
         {
+            ModelState.Clear();
+
             category.CreatedAt = DateTime.Now;
             category.Status = true;
 
-            _categoryService.TInsert(category);
-            return Redirect("/Admin/Category/CategoryList");
+            CreateCategoryValidator validationRules = new CreateCategoryValidator();
+            ValidationResult result = validationRules.Validate(category);
+
+            if (result.IsValid)
+            {
+                _categoryService.TInsert(category);
+                return Redirect("/Admin/Category/CategoryList");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public IActionResult Delete(int id)
@@ -55,9 +73,26 @@ namespace PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Update(Category category)
         {
+            ModelState.Clear();
+
             category.UpdatedAt = DateTime.Now;
-            _categoryService.TUpdate(category);
-            return Redirect("/Admin/Category/CategoryList");
+
+            UpdateCategoryValidator validationRules = new UpdateCategoryValidator();
+            ValidationResult result = validationRules.Validate(category);
+
+            if (result.IsValid)
+            {
+                _categoryService.TUpdate(category);
+                return Redirect("/Admin/Category/CategoryList");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
     }
 }

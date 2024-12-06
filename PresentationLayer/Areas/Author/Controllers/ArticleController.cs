@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules.ArticleValidationRules;
+using BusinessLayer.ValidationRules.CategoryValidationRules;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -40,12 +43,29 @@ namespace PresentationLayer.Areas.Author.Controllers
         [HttpPost]
         public IActionResult Create(Article article)
         {
+            ModelState.Clear();
+
             article.ArticleStatus = ArticleStatus.AwaitingApproval;
             article.Status = true;
             article.CreatedAt = DateTime.Now;
             article.ViewCount = 0;
-            _articleService.TInsert(article);
-            return Redirect("/Author/Article/MyArticles");
+
+            CreateArticleValidator validationRules = new CreateArticleValidator();
+            ValidationResult result = validationRules.Validate(article);
+
+            if (result.IsValid)
+            {
+                _articleService.TInsert(article);
+                return Redirect("/Author/Article/MyArticles");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public IActionResult Delete(int id)

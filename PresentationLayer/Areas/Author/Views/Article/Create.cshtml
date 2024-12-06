@@ -44,6 +44,7 @@
                                         <label for="first-name-icon">Kategori</label>
                                         <div class="position-relative">
                                             @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class="form-control" })
+                                            <span class="text-danger" asp-validation-for="CategoryId"></span>
                                             <div class="form-control-icon">
                                                 <i class="bi bi-inboxes"></i>
                                             </div>
@@ -57,6 +58,7 @@
                                             <input type="text" asp-for="ImageUrl" class="form-control"
                                                    placeholder="Görsel linkini buraya yapıştırın"
                                                    id="first-name-icon">
+                                            <span class="text-danger" asp-validation-for="ImageUrl"></span>
                                             <div class="form-control-icon">
                                                 <i class="bi bi-image"></i>
                                             </div>
@@ -70,6 +72,7 @@
                                             <input type="text" asp-for="Title" class="form-control"
                                                    placeholder="Yazı başlığını yazın"
                                                    id="first-name-icon">
+                                            <span class="text-danger" asp-validation-for="Title"></span>
                                             <div class="form-control-icon">
                                                 <i class="bi bi-card-heading"></i>
                                             </div>
@@ -83,6 +86,7 @@
                                             <textarea asp-for="Content" rows="10" class="form-control"
                                                    placeholder="Yazı içeriğini buraya girin"
                                                    id="first-name-icon"></textarea>
+                                            <span class="text-danger" asp-validation-for="Content"></span>
                                             <div class="form-control-icon">
                                                 <i class="bi bi-paragraph"></i>
                                             </div>
