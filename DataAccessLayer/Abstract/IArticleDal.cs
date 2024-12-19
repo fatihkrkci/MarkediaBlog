@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace DataAccessLayer.Abstract
         List<Article> GetArticlesByAppUserId(int id);
         Article GetLastArticle();
         List<Article> GetLastThreeArticles();
+        List<CategoryArticleCountViewModel> GetArticleCountGroupedByCategory();
     }
 }

@@ -1,0 +1,15 @@
+﻿@model List<CategoryArticleCountViewModel>
+
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <div class="widget">
+        <h2 class="widget-title">Kategoriler</h2>
+        <div class="link-widget">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li><a href="#">@item.CategoryName <span>(@item.ArticleCount)</span></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

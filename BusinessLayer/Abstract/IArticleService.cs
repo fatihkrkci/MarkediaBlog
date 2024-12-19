@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace BusinessLayer.Abstract
         public List<Article> TGetArticlesByAppUserId(int id);
         public Article TGetLastArticle();
         public List<Article> TGetLastThreeArticles();
+        public List<CategoryArticleCountViewModel> TGetArticleCountGroupedByCategory();
     }
 }

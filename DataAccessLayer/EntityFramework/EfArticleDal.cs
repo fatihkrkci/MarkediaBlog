@@ -2,6 +2,7 @@
 using DataAccessLayer.Context;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using EntityLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,20 @@ namespace DataAccessLayer.EntityFramework
         public List<Article> DisapprovedArticles()
         {
             return _context.Articles.Include(x => x.Category).Where(y => y.ArticleStatus == ArticleStatus.Disapproved).ToList();
+        }
+
+        public List<CategoryArticleCountViewModel> GetArticleCountGroupedByCategory()
+        {
+            return _context.Articles
+                .GroupBy(a => new { a.CategoryId, a.Category.Name })
+                .Select(g => new CategoryArticleCountViewModel
+                {
+                    CategoryId = g.Key.CategoryId,
+                    CategoryName = g.Key.Name,
+                    ArticleCount = g.Count()
+                })
+                .OrderByDescending(x => x.ArticleCount)
+                .ToList();
         }
 
         public Article GetArticleDetails(int id)

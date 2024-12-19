@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,11 @@ namespace BusinessLayer.Concrete
         public List<Article> TGetAll()
         {
             return _articleDal.GetAll();
+        }
+
+        public List<CategoryArticleCountViewModel> TGetArticleCountGroupedByCategory()
+        {
+            return _articleDal.GetArticleCountGroupedByCategory();
         }
 
         public Article TGetArticleDetails(int id)

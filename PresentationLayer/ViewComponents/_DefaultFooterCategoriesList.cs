@@ -3,14 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.ViewComponents
 {
-    public class _DefaultCategoryListComponentPartial : ViewComponent
+    public class _DefaultFooterCategoriesList : ViewComponent
     {
-        private readonly ICategoryService _categoryService;
         private readonly IArticleService _articleService;
 
-        public _DefaultCategoryListComponentPartial(ICategoryService categoryService, IArticleService articleService)
+        public _DefaultFooterCategoriesList(IArticleService articleService)
         {
-            _categoryService = categoryService;
             _articleService = articleService;
         }
 
