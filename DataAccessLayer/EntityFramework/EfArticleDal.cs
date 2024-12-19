@@ -56,5 +56,10 @@ namespace DataAccessLayer.EntityFramework
         {
             return _context.Articles.Where(x => x.AppUserId == id).ToList();
         }
+
+        public Article GetLastArticle()
+        {
+            return _context.Articles.OrderByDescending(x => x.ArticleId).Take(1).FirstOrDefault();
+        }
     }
 }

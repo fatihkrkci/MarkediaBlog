@@ -16,5 +16,6 @@ namespace BusinessLayer.Abstract
         public Article TGetArticleDetails(int id);
         public void TArticleViewCountIncrease(int id);
         public List<Article> TGetArticlesByAppUserId(int id);
+        public Article TGetLastArticle();
     }
 }

@@ -5,9 +5,17 @@ namespace PresentationLayer.ViewComponents
 {
     public class _DefaultBannerComponentPartial : ViewComponent
     {
+        private readonly IArticleService _articleService;
+
+        public _DefaultBannerComponentPartial(IArticleService articleService)
+        {
+            _articleService = articleService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = _articleService.TGetLastArticle();
+            return View(values);
         }
     }
 }
