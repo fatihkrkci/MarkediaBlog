@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using X.PagedList.Extensions;
 
 namespace PresentationLayer.Controllers
@@ -9,11 +11,15 @@ namespace PresentationLayer.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly INewsLetterService _newsletterService;
+        private readonly ICommentService _commentService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public DefaultController(IArticleService articleService, INewsLetterService newsletterService)
+        public DefaultController(IArticleService articleService, INewsLetterService newsletterService, ICommentService commentService, UserManager<AppUser> userManager)
         {
             _articleService = articleService;
             _newsletterService = newsletterService;
+            _commentService = commentService;
+            _userManager = userManager;
         }
 
         public IActionResult Index(int page = 1)
@@ -40,11 +46,23 @@ namespace PresentationLayer.Controllers
         {
             _newsletterService.TInsert(newsLetter);
 
-            // Success mesajı ekliyoruz
             TempData["SuccessMessage"] = "Bültenimize başarıyla abone oldunuz!";
 
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddComment(Comment comment)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            comment.AppUserId = user.Id;
+            comment.CreatedAt = DateTime.Now;
+            comment.Status = true;
+
+            _commentService.TInsert(comment);
+
+            return RedirectToAction("Index", "Default");
+        }
     }
 }

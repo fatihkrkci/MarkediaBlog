@@ -1,4 +1,5 @@
-﻿@model List<Comment>
+﻿@using PresentationLayer.Helpers
+@model List<Comment>
 
 <div class="custombox clearfix">
     <h4 class="small-title">Yorumlar</h4>
@@ -11,10 +12,10 @@
                     {
                         <div class="media">
                             <a class="media-left" href="#">
-                                <img src="@item.AppUser.ImageUrl" alt="" class="rounded-circle">
+                                <img src="@item.AppUser.ImageUrl" alt="" class="rounded-circle" style="width: 75px; height: 75px; object-fit: cover">
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading user_name">@item.AppUser.Name @item.AppUser.Surname<small>@item.CreatedAt.ToShortTimeString()</small></h4>
+                                <h4 class="media-heading user_name">@item.AppUser.Name @item.AppUser.Surname<small>@item.CreatedAt.TimeAgo()</small></h4>
                                 <p>@item.Content</p>
                             </div>
                         </div>
@@ -25,6 +26,6 @@
                     <p>Bu yazıya henüz bir yorum yapılmamış.</p>
                 }
             </div>
-        </div><!-- end col -->
-    </div><!-- end row -->
-</div><!-- end custom-box -->
+        </div>
+    </div>
+</div>

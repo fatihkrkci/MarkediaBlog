@@ -1,0 +1,24 @@
+﻿@model Comment
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="custombox clearfix">
+        <h4 class="small-title">Yeni Yorum Yaz</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-wrapper" method="post" action="/Default/AddComment">
+                    <input type="hidden" asp-for="ArticleId" value="@ViewData["ArticleId"]" />
+                    <textarea class="form-control" asp-for="Content" placeholder="Yorumunuz"></textarea>
+                    <button type="submit" class="btn btn-primary">Yorum Yap</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>Yorum yapabilmek için giriş yapmanız gerekmektedir.</p>
+        <a href="/Login/Index" class="btn btn-primary">Giriş Yap</a>
+    </div>
+}

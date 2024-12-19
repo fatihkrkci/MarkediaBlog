@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.ViewComponents
@@ -12,9 +14,9 @@ namespace PresentationLayer.ViewComponents
             _commentService = commentService;
         }
 
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(int articleId)
         {
-            var values = _commentService.TGetCommentsByArticleId(2);
+            var values = _commentService.TGetCommentsByArticleId(articleId);
             return View(values);
         }
     }
