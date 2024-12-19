@@ -45,10 +45,13 @@ namespace PresentationLayer.Areas.Author.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Article article)
+        public async Task<IActionResult> Create(Article article)
         {
             ModelState.Clear();
 
+            var userValue = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            article.AppUserId = userValue.Id;
             article.ArticleStatus = ArticleStatus.AwaitingApproval;
             article.Status = true;
             article.CreatedAt = DateTime.Now;
@@ -80,5 +83,48 @@ namespace PresentationLayer.Areas.Author.Controllers
             _articleService.TUpdate(article);
             return Redirect("/Author/Article/MyArticles");
         }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var value = _articleService.TGetById(id);
+
+            var categoryList = _categoryService.TGetActiveCategoriesSortedDescending();
+            List<SelectListItem> categories = (from x in categoryList
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.CategoryId.ToString()
+                                               }).ToList();
+            ViewBag.Categories = categories;
+
+            return View(value);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Article article)
+        {
+            ModelState.Clear();
+
+            var userValue = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var existingArticle = _articleService.TGetById(article.ArticleId);
+
+            article.AppUserId = userValue.Id;
+            article.Title = existingArticle.Title;
+            article.Content = existingArticle.Content;
+            article.ImageUrl = existingArticle.ImageUrl;
+            article.ArticleStatus = existingArticle.ArticleStatus;
+            article.CategoryId = existingArticle.CategoryId;
+            article.CreatedAt = existingArticle.CreatedAt;
+            article.ViewCount = existingArticle.ViewCount;
+            article.Status = existingArticle.Status;
+            article.UpdatedAt = DateTime.Now;
+
+            _articleService.TUpdate(article);
+
+            return Redirect("/Author/Article/MyArticles");
+        }
+
     }
 }
