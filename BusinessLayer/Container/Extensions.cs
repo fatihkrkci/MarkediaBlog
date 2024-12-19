@@ -33,6 +33,9 @@ namespace BusinessLayer.Container
 
             services.AddScoped<ITagCloudDal, EfTagCloudDal>();
             services.AddScoped<ITagCloudService, TagCloudManager>();
+
+            services.AddScoped<INewsLetterDal, EfNewsLetterDal>();
+            services.AddScoped<INewsLetterService, NewsLetterManager>();
         }
     }
 }

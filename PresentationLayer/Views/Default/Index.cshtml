@@ -19,7 +19,7 @@
                         <div class="blog-custom-build">
                             <div class="blog-box wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
                                 <div class="post-media">
-                                    <a href="marketing-single.html" title="">
+                                    <a href="/Default/ArticleDetail/@item.ArticleId" title="">
                                         <img src="@item.ImageUrl" alt="" class="img-fluid">
                                         <div class="hovereffect">
                                             <span></span>
@@ -55,7 +55,6 @@
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
-                    @await Component.InvokeAsync("_DefaultNewsletterComponentPartial")
                     @await Component.InvokeAsync("_DefaultLast3ArticleComponentPartial")
                     @await Component.InvokeAsync("_DefaultCategoryListComponentPartial")
                 </div>
@@ -92,3 +91,17 @@
         color: #aaa;
     }
 </style>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+                Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "@TempData["SuccessMessage"]",
+          showConfirmButton: false,
+          timer: 2500
+        });
+    </script>
+}
+

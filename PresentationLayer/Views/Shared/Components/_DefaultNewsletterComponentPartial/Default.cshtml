@@ -1,9 +1,11 @@
-﻿<div class="widget-no-style">
+﻿@model NewsLetter
+
+<div class="widget-no-style">
     <div class="newsletter-widget text-center align-self-center">
         <h3>Bültenimize Abone Ol!</h3>
         <p>Haftalık bültenimize abone olun ve e-posta yoluyla güncellemeleri alın.</p>
-        <form class="form-inline" method="post">
-            <input type="text" name="email" placeholder="E-Posta Adresinizi Yazınız" required="" class="form-control">
+        <form class="form-inline" method="post" action="/Default/Subscribe">
+            <input type="text" asp-for="Email" placeholder="E-Posta Adresinizi Yazınız" required="" class="form-control">
             <input type="submit" value="Abone Ol" class="btn btn-default btn-block">
         </form>
     </div>

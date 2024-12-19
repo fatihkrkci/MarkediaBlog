@@ -20,5 +20,6 @@ namespace DataAccessLayer.Abstract
         Article GetLastArticle();
         List<Article> GetLastThreeArticles();
         List<CategoryArticleCountViewModel> GetArticleCountGroupedByCategory();
+        List<Article> GetPopularArticles();
     }
 }

@@ -22,5 +22,6 @@ namespace DataAccessLayer.Context
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<SocialMediaAccount> SocialMediaAccounts { get; set; }
         public DbSet<TagCloud> TagClouds { get; set; }
+        public DbSet<NewsLetter> NewsLetters { get; set; }
     }
 }

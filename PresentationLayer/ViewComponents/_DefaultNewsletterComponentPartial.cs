@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
-namespace PresentationLayer.ViewComponents
+public class _DefaultNewsletterComponentPartial : ViewComponent
 {
-    public class _DefaultNewsletterComponentPartial : ViewComponent
+    private readonly INewsLetterService _newsletterService;
+
+    public _DefaultNewsletterComponentPartial(INewsLetterService newsletterService)
     {
-        public IViewComponentResult Invoke()
-        {
-            return View();
-        }
+        _newsletterService = newsletterService;
+    }
+
+    public IViewComponentResult Invoke()
+    {
+        var newsletter = new NewsLetter();
+        return View(newsletter);
     }
 }

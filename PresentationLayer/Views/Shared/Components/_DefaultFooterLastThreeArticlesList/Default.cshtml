@@ -1,0 +1,21 @@
+﻿@model List<Article>
+
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <div class="widget">
+        <h2 class="widget-title">Son Eklenen Yazılar</h2>
+        <div class="blog-list-widget">
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                    <a href="/Default/ArticleDetail/@item.ArticleId" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="w-100 justify-content-between">
+                            <img src="@item.ImageUrl" alt="" class="img-fluid float-left">
+                            <h5 class="mb-1">@item.Title</h5>
+                            <small>@item.CreatedAt.ToString("dd.MM.yyyy")</small>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

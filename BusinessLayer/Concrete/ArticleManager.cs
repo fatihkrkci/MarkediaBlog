@@ -84,6 +84,11 @@ namespace BusinessLayer.Concrete
             return _articleDal.GetLastThreeArticles();
         }
 
+        public List<Article> TGetPopularArticles()
+        {
+            return _articleDal.GetPopularArticles();
+        }
+
         public void TInsert(Article entity)
         {
             _articleDal.Insert(entity);

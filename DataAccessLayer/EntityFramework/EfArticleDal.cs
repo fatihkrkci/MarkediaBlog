@@ -81,5 +81,10 @@ namespace DataAccessLayer.EntityFramework
         {
             return _context.Articles.OrderByDescending(x => x.ArticleId).Take(3).ToList();
         }
+
+        public List<Article> GetPopularArticles()
+        {
+            return _context.Articles.OrderByDescending(x => x.ViewCount).Take(3).ToList();
+        }
     }
 }
