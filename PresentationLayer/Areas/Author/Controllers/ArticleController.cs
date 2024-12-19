@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules.ArticleValidationRules;
 using BusinessLayer.ValidationRules.CategoryValidationRules;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -12,17 +13,20 @@ namespace PresentationLayer.Areas.Author.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _articleService;
+        private readonly UserManager<AppUser> _userManager;
         private readonly ICategoryService _categoryService;
 
-        public ArticleController(IArticleService articleService, ICategoryService categoryService)
+        public ArticleController(IArticleService articleService, UserManager<AppUser> userManager, ICategoryService categoryService)
         {
             _articleService = articleService;
+            _userManager = userManager;
             _categoryService = categoryService;
         }
 
-        public IActionResult MyArticles()
+        public async Task<IActionResult> MyArticles()
         {
-            var values = _articleService.TGetAll();
+            var userValue = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _articleService.TGetArticlesByAppUserId(userValue.Id);
             return View(values);
         }
 

@@ -51,5 +51,10 @@ namespace DataAccessLayer.EntityFramework
         {
             return _context.Articles.Include(x => x.Category).Include(y => y.AppUser).Where(z => z.ArticleId == id).FirstOrDefault();
         }
+
+        public List<Article> GetArticlesByAppUserId(int id)
+        {
+            return _context.Articles.Where(x => x.AppUserId == id).ToList();
+        }
     }
 }

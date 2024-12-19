@@ -20,6 +20,11 @@ namespace DataAccessLayer.EntityFramework
             _context = context;
         }
 
+        public List<Comment> GetCommentsByAppUserId(int id)
+        {
+            return _context.Comments.Where(x => x.AppUserId == id).ToList();
+        }
+
         public List<Comment> GetCommentsByArticleId(int id)
         {
             return _context.Comments.Where(x => x.ArticleId == id).Include(y => y.AppUser).ToList();
