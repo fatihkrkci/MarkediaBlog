@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList.Extensions;
 
 namespace PresentationLayer.Controllers
 {
@@ -12,10 +13,15 @@ namespace PresentationLayer.Controllers
             _articleService = articleService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
+            const int pageSize = 3;
+
             var articles = _articleService.TArticleListWithCategoryAndAppUser();
-            return View(articles);
+
+            var pagedArticles = articles.ToPagedList(page, pageSize);
+
+            return View(pagedArticles);
         }
 
         public IActionResult ArticleDetail(int id)
