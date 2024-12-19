@@ -61,5 +61,10 @@ namespace DataAccessLayer.EntityFramework
         {
             return _context.Articles.OrderByDescending(x => x.ArticleId).Take(1).FirstOrDefault();
         }
+
+        public List<Article> GetLastThreeArticles()
+        {
+            return _context.Articles.OrderByDescending(x => x.ArticleId).Take(3).ToList();
+        }
     }
 }

@@ -73,6 +73,11 @@ namespace BusinessLayer.Concrete
             return _articleDal.GetLastArticle();
         }
 
+        public List<Article> TGetLastThreeArticles()
+        {
+            return _articleDal.GetLastThreeArticles();
+        }
+
         public void TInsert(Article entity)
         {
             _articleDal.Insert(entity);
