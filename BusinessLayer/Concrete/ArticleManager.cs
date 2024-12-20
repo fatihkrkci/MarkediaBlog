@@ -79,6 +79,11 @@ namespace BusinessLayer.Concrete
             return _articleDal.GetLastArticle();
         }
 
+        public Article TGetLastArticleByAppUserIdWithCategory(int id)
+        {
+            return _articleDal.GetLastArticleByAppUserIdWithCategory(id);
+        }
+
         public List<Article> TGetLastThreeArticles()
         {
             return _articleDal.GetLastThreeArticles();

@@ -77,6 +77,11 @@ namespace DataAccessLayer.EntityFramework
             return _context.Articles.OrderByDescending(x => x.ArticleId).Take(1).FirstOrDefault();
         }
 
+        public Article GetLastArticleByAppUserIdWithCategory(int id)
+        {
+            return _context.Articles.Include(c => c.Category).Where(x => x.AppUserId == id).OrderByDescending(x => x.ArticleId).Take(1).FirstOrDefault();
+        }
+
         public List<Article> GetLastThreeArticles()
         {
             return _context.Articles.OrderByDescending(x => x.ArticleId).Take(3).ToList();

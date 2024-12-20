@@ -21,5 +21,6 @@ namespace BusinessLayer.Abstract
         public List<Article> TGetLastThreeArticles();
         public List<CategoryArticleCountViewModel> TGetArticleCountGroupedByCategory();
         public List<Article> TGetPopularArticles();
+        public Article TGetLastArticleByAppUserIdWithCategory(int id);
     }
 }
