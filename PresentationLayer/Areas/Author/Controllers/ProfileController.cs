@@ -24,6 +24,7 @@ namespace PresentationLayer.Areas.Author.Controllers
             model.Surname = values.Surname;
             model.Username = values.UserName;
             model.Email = values.Email;
+            model.About = values.About;
             return View(model);
         }
 
@@ -35,6 +36,7 @@ namespace PresentationLayer.Areas.Author.Controllers
             user.Surname = model.Surname;
             user.UserName = model.Username;
             user.Email = model.Email;
+            user.About = model.About;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, model.Password);
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)

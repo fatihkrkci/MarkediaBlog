@@ -1,4 +1,10 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<SocialMediaAccount>
+
+<div class="topsocial">
+    @foreach (var item in Model)
+    {
+        <a href="@item.Url">
+            <i class="@item.Icon" style="width:15px; height:15px"></i>
+        </a>
+    }
+</div>

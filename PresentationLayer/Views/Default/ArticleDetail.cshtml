@@ -24,15 +24,6 @@
                     <div class="blog-content">
                         <p>@Model.Content</p>
                     </div>
-                    <div class="blog-title-area">
-                        <div class="tag-cloud-single">
-                            <span>Tags</span>
-                            <small><a href="#" title="">lifestyle</a></small>
-                            <small><a href="#" title="">colorful</a></small>
-                            <small><a href="#" title="">trending</a></small>
-                            <small><a href="#" title="">another tag</a></small>
-                        </div>
-                    </div>
                     <hr class="invis1">
                     <div class="custombox authorbox clearfix">
                         <h4 class="small-title">Yazar Hakkında</h4>
@@ -43,14 +34,7 @@
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                 <h4><a href="#">@Model.AppUser.Name @Model.AppUser.Surname</a></h4>
                                 <p>@Model.AppUser.About</p>
-                                <div class="topsocial">
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Youtube"><i class="fa fa-youtube"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Instagram"><i class="fa fa-instagram"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Website"><i class="fa fa-link"></i></a>
-                                </div>
+                                @await Component.InvokeAsync("_DefaultSocialMediaAccountComponentPartial")
                             </div>
                         </div>
                     </div>
