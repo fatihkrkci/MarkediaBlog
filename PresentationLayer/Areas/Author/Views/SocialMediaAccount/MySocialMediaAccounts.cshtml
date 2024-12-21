@@ -1,7 +1,7 @@
-﻿@model List<Comment>
+﻿@model List<SocialMediaAccount>
 
 @{
-    ViewData["Title"] = "MyCommentList";
+    ViewData["Title"] = "MySocialMediaAccounts";
     Layout = "~/Areas/Author/Views/Shared/_AuthorLayout.cshtml";
 }
 
@@ -17,14 +17,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Yorum İşlemleri</h3>
-                <p class="text-subtitle text-muted">Bu sayfadan çeşitli yazılara kendi yazdığınız yorumları görüntüleyebilir ve çeşitli işlemler yapabilirsiniz.</p>
+                <h3>Sosyal Medya Hesaplarım</h3>
+                <p class="text-subtitle text-muted">Bu sayfadan kendi sosyal medya hesaplarınız ile ilgili çeşitli işlemler gerçekleştirebilirsiniz.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/Istatistik/Index/">Yazar Paneli</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Yorum İşlemleri</li>
+                        <li class="breadcrumb-item active" aria-current="page">Sosyal Medya Hesaplarım</li>
                     </ol>
                 </nav>
             </div>
@@ -32,14 +32,16 @@
     </div>
     <section class="section">
         <div class="card">
-            <div class="card-header" style="padding-bottom:0">
-                <h4 class="card-title">Yorumlarım</h4>
+            <div class="card-header">
+                <a href="/Author/SocialMediaAccount/Create" class="btn btn-primary">Yeni Sosyal Medya Hesabı Ekle</a>
             </div>
             <div class="card-body">
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>Başlık</th>
+                            <th>İkon</th>
+                            <th>Sosyal Medya Platformu</th>
+                            <th>Hesapl Linki</th>
                             <th>İşlemler</th>
                         </tr>
                     </thead>
@@ -47,21 +49,17 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td>@item.Icon</td>
+                                <td>@item.Name</td>
+                                <td>@item.Url</td>
                                 <td>
-                                    @if (item.Content.Length > 50)
-                                    {
-                                        @item.Content.Substring(0, 50)<text>...</text>
-                                    }
-                                    else
-                                    {
-                                        @item.Content
-                                    }
-                                </td>
-                                <td>
-                                    <a href="/Author/Article/Update/@item.ArticleId" class="btn btn-warning" title="Yazıyı güncelle">
+                                    <a href="@item.Url" class="btn btn-primary" title="Profili İncele">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="/Author/SocialMediaAccount/Update/@item.SocialMediaAccountId" class="btn btn-warning" title="Güncelle">
                                         <i class="bi bi-pencil-fill"></i>
                                     </a>
-                                    <a href="/Author/Article/Delete/@item.ArticleId" class="btn btn-danger" title="Yazıyı sil">
+                                    <a href="/Author/SocialMediaAccount/Delete/@item.SocialMediaAccountId" class="btn btn-danger" title="Sil">
                                         <i class="bi bi-trash-fill"></i>
                                     </a>
                                 </td>

@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
     public interface ISocialMediaAccountDal : IGenericDal<SocialMediaAccount>
     {
         List<SocialMediaAccount> GetActiveSocialMediaAccounts();
+        Task<List<SocialMediaAccount>> GetSocialMediaAccountsByAppUserIdAsync(int id);
     }
 }

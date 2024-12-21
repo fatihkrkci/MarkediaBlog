@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _socialMediaAccountDal.GetById(id);
         }
 
+        public async Task<List<SocialMediaAccount>> TGetSocialMediaAccountsByAppUserIdAsync(int id)
+        {
+            return await _socialMediaAccountDal.GetSocialMediaAccountsByAppUserIdAsync(id);
+        }
+
         public void TInsert(SocialMediaAccount entity)
         {
             _socialMediaAccountDal.Insert(entity);
